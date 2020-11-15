@@ -12,13 +12,13 @@ const NavBar = () => {
 
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink to="">Companies</NavLink>
+            <NavLink to="/companies">Companies</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="">Jobs</NavLink>
+            <NavLink to="/jobs">Jobs</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="">Profile</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
           </NavItem>
         </Nav>
       </Navbar>
