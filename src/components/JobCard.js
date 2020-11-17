@@ -11,10 +11,10 @@ const JobCard = () => {
     <Card>
       <CardBody>
         <CardTitle>
-          Card Title
+          Job Title
         </CardTitle>
         <CardText>
-          Card Text
+          Job Description
         </CardText>
         <Button color="primary">
           Apply
