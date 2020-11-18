@@ -7,7 +7,6 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import defaultLogo from '../default_logo.png';
-import '../styles/CompanyCard.css';
 
 const CompanyCard = ({ item = {} }) => {
   const { name, description, logo_url, handle } = item;
@@ -15,12 +14,12 @@ const CompanyCard = ({ item = {} }) => {
     <Link to={`/companies/${handle}`}>
       <Card>
         <CardBody>
-          <CardTitle className="d-inline-block">
-            Company Name
+          <CardTitle className="d-flex justify-content-between">
+            <span className="text-capitalize">{name}</span>
           </CardTitle>
           <CardImg className="CompanyCard-logo d-inline-block" src={logo_url || defaultLogo} />
-          <CardText className="d-inline-block">
-            Company Description
+          <CardText>
+            {description}
           </CardText>
         </CardBody>
       </Card>
