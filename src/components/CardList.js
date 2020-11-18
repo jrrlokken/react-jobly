@@ -1,6 +1,6 @@
 import Card from './Card';
 
-const CardList = ({ cards = [], apply = () => null }) => {
+function CardList({ cards = [], apply = () => null }) {
   return cards.length ? (
     <div className="CardList">
       {cards.map((cardData, idx) => {
