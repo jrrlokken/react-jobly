@@ -79,7 +79,7 @@ const Login = ({ setToken }) => {
       <FormGroup>
         <Label>First Name</Label>
         <Input
-          name="first-name"
+          name="first_name"
           value={loginInfo.first_name}
           onChange={handleChange}
         />
@@ -87,7 +87,7 @@ const Login = ({ setToken }) => {
       <FormGroup>
         <Label>Last Name</Label>
         <Input
-          name="last-name"
+          name="last_name"
           value={loginInfo.last_name}
           onChange={handleChange}
         />
@@ -106,7 +106,7 @@ const Login = ({ setToken }) => {
 
   return (
     <div className="Login">
-      <Container className="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+      <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
         <div className="d-flex justify-content-end">
           <div className="btn-group">
             <button
@@ -153,7 +153,7 @@ const Login = ({ setToken }) => {
             </Form>
           </CardBody>
         </Card>
-      </Container>
+      </div>
     </div>
   );
 }
