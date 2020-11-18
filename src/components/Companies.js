@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Container } from 'reactstrap';
 import CardList from './CardList';
 import Search from './Search';
 import JoblyAPI from '../JoblyAPI';
@@ -21,10 +20,10 @@ const Companies = () => {
   }
 
   return (
-    <Container>
+    <div className="col-md-8 offset-md-2">
       <Search endpoint="companies" searchFor={handleSearch} />
       <CardList cards={companies} />
-    </Container>
+    </div>
   )
 }
 
