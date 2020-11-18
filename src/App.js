@@ -45,7 +45,7 @@ const App = () => {
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
         <div className="App">
           <NavBar logout={handleLogout} />
-          <Routes />
+          <Routes setToken={setToken} />
         </div>
     </UserContext.Provider>
     </BrowserRouter>
