@@ -47,7 +47,7 @@ const App = () => {
           <NavBar logout={handleLogout} />
           <Routes setToken={setToken} />
         </div>
-    </UserContext.Provider>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }
