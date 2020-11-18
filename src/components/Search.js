@@ -15,7 +15,7 @@ const Search = ({ searchFor }) => {
   }
 
   return (
-    <Container className="Search mb-4">
+    <div className="Search mb-4">
       <Form className="form-inline" onSubmit={handleSubmit}>
         <Input
           className="form-control-lg flex-grow-1"
@@ -24,9 +24,15 @@ const Search = ({ searchFor }) => {
           value={search}
           onChange={handleChange}
         />
-        <Button size="lg" color="primary">Submit</Button>
+        <Button
+          size="lg" 
+          color="primary"
+          className="ml-2"
+        >
+          Submit
+        </Button>
       </Form>
-    </Container>
+    </div>
   )
 }
 
