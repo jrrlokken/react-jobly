@@ -18,7 +18,7 @@ const Search = ({ searchFor }) => {
     <Container className="Search mb-4">
       <Form className="form-inline" onSubmit={handleSubmit}>
         <Input
-          className="form-control form-control-lg flex-grow-1"
+          className="form-control-lg flex-grow-1"
           name="search"
           placeholder="Enter search term..."
           value={search}
