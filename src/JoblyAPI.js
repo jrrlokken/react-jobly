@@ -4,20 +4,26 @@ import { TOKEN_STORAGE_ID } from './App.js';
 const BASE_URL = process.env.BASE_URL || "http://localhost:3001";
 
 class JoblyAPI {
-  static async request(endpoint, paramsOrData = {}, verb = "get") {
-    paramsOrData._token = (
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
-      "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
-      "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U"
-    );
+  static async request(endpoint, params = {}, verb = "get") {
+    let _token = localStorage.getItem(TOKEN_STORAGE_ID);
 
-    console.debug("API call:", endpoint, paramsOrData, verb);
+    console.debug("API call:", endpoint, params, verb);
+
+    let q;
+
+    if (verb === "get") {
+      q = axios.get(
+        `${BASE_URL}/${endpoint}`, { params: {_token, ...params }});
+    } else if (verb === "post") {
+      q = axios.post(
+        `${BASE_URL}/${endpoint}`, { _token, ...params });
+    } else if (verb === "patch") {
+      q = axios.patch(
+        `${BASE_URL}/${endpoint}`, { _token, ...params });
+    }
 
     try {
-      return (await axios({
-        method: verb,
-        url: `${BASE_URL}/${endpoint}`,
-        [verb === "get" ? "params" : "data"]: paramsOrData})).data;
+      return (await q).data;
     } catch (error) {
       console.error("API error:", error.response);
       let message = error.response.data.message;
