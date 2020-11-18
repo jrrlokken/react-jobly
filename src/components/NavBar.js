@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { Navbar, Nav, NavItem } from "reactstrap";
-import { NavLink, Link } from 'react-router-dom';
+import { Navbar, Nav, NavbarBrand, NavItem } from "reactstrap";
+import { NavLink } from 'react-router-dom';
 import '../styles/NavBar.css';
 import UserContext from '../UserContext';
 
@@ -9,42 +9,38 @@ const NavBar = ({ logout }) => {
 
   const loggedInNav = () => {
     return (
-        <>
-          <NavItem className="mr-4">
+        <Nav className="ml-auto">
+          <NavItem>
             <NavLink to="/companies">Companies</NavLink>
           </NavItem>
-          <NavItem className="mr-4">
+          <NavItem>
             <NavLink to="/jobs">Jobs</NavLink>
           </NavItem>
-          <NavItem className="mr-4">
+          <NavItem>
             <NavLink to="/profile">Profile</NavLink>
           </NavItem>
-          <NavLink className="nav-link" to="/" onClick={logout}>Log out</NavLink>
-        </>
-        
-        
+          <NavItem>
+            <NavLink to="/" onClick={logout}>Log Out</NavLink>
+          </NavItem>
+        </Nav>
     );
   }
 
   const loggedOutNav = () => {
     return (
-      <>
-        <NavItem className="mr-4">
-          <NavLink to="/login">
-            Login
-          </NavLink>
+      <Nav className="ml-auto">
+        <NavItem>
+          <NavLink to="/login">Login</NavLink>
         </NavItem>
-      </> 
+      </Nav>
     );
   }
 
   return (
-    <Navbar className="mb-4">
-      <NavLink exact to="/" className="navbar-brand">
-        Jobly
-      </NavLink>
-      {loggedInNav()}
-      {/* {currentUser ? loggedInNav() : loggedOutNav()} */}
+    <Navbar expand="md">
+      <NavbarBrand href="/">Jobly</NavbarBrand>
+      {/* {loggedInNav()} */}
+      {currentUser ? loggedInNav() : loggedOutNav()}
     </Navbar>
   );
 }
