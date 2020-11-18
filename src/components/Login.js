@@ -1,8 +1,17 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import JoblyAPI from '../JoblyAPI';
+import AppAlert from './AppAlert';
+import '../styles/Login.css';
 import {
-  Container, FormGroup, Label, Input
+  Container,
+  FormGroup, 
+  Label, 
+  Input,
+  Button,
+  Card,
+  CardBody,
+  Form
 } from 'reactstrap';
 
 const Login = ({ setToken }) => {
@@ -52,50 +61,101 @@ const Login = ({ setToken }) => {
     try {
       token = await JoblyAPI[endpoint](data);
     } catch(errors) {
-      return setLoginInfo(l => ({ ...l, [name]: value }));
+      return setLoginInfo(l => ({ ...l, errors }));
     }
 
-    let loginActive = activeView === "login";
-
-    const registerFields = (
-      <div>
-        <FormGroup>
-          <Label for="first-name">First Name</Label>
-          <Input
-            name="first-name"
-            value={loginInfo.first_name}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="last-name">Last Name</Label>
-          <Input
-            name="last-name"
-            value={loginInfo.last_name}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="email">Email</Label>
-          <Input
-            type="email"
-            name="email"
-            value={loginInfo.email}
-            onChange={handleChange}
-          />
-        </FormGroup>
-      </div>
-    );
+    setToken(token);
+    history.push("/jobs");
   }
+  const handleChange = evt => {
+    const { name, value } = evt.target;
+    setLoginInfo(l => ({ ...l, [name]: value }));
+  }
+
+  let loginActive = activeView === "login";
+
+  const registerFields = (
+    <div>
+      <FormGroup>
+        <Label>First Name</Label>
+        <Input
+          name="first-name"
+          value={loginInfo.first_name}
+          onChange={handleChange}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label>Last Name</Label>
+        <Input
+          name="last-name"
+          value={loginInfo.last_name}
+          onChange={handleChange}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label>Email</Label>
+        <Input
+          type="email"
+          name="email"
+          value={loginInfo.email}
+          onChange={handleChange}
+        />
+      </FormGroup>
+    </div>
+  );
 
   return (
     <div className="Login">
-      <Container>
-        
+      <Container className="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <div className="d-flex justify-content-end">
+          <div className="btn-group">
+            <button
+              className={`btn btn-primary ${loginActive ? "active" : ""}`}
+              onClick={setLoginView}
+            >
+              Login
+            </button>
+            <button
+              className={`btn btn-primary ${loginActive ? "" : "active"}`}
+              onClick={setRegisterView}
+            >
+              Register
+            </button>
+          </div>
+        </div>
+        <Card>
+          <CardBody>
+            <Form onSubmit={handleSubmit}>
+              <FormGroup>
+                <Label>Username</Label>
+                <Input
+                  name="username"
+                  value={loginInfo.username}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>Password</Label>
+                <Input
+                  type="password"
+                  name="password"
+                  value={loginInfo.password}
+                  onChange={handleChange}
+                />
+              </FormGroup>
+              {loginActive ? "" : registerFields}
+              {loginInfo.errors.length ? (
+                <AppAlert type="danger" messages={loginInfo.errors} />
+              ) : null}
+              <Button color="primary" className="float-right" onSubmit={handleSubmit}>
+                Submit
+              </Button>
+            </Form>
+          </CardBody>
+        </Card>
       </Container>
     </div>
-    
-  )
+  );
 }
 
 export default Login;
