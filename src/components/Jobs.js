@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import CardList from './CardList';
 import Search from './Search';
 import JoblyAPI from '../JoblyAPI';
-import { Container } from 'reactstrap';
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -23,10 +22,10 @@ const Jobs = () => {
   }
 
   return (
-    <Container className="Jobs">
+    <div className="Jobs col-md-8 offset-md-2">
       <Search endpoint="jobs" searchFor={search} />
       <CardList cards={jobs} apply={apply} />
-    </Container>
+    </div>
   )
 }
 
