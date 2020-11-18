@@ -1,5 +1,6 @@
 import CompanyCard from './CompanyCard';
 import JobCard from './JobCard';
+import '../styles/Card.css';
 
 const Card = ({ item = {}, apply = () => null, idx }) => {
   if (item.handle) {
