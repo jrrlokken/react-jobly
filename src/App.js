@@ -8,6 +8,7 @@ import Routes from './components/Routes';
 import './App.css';
 import JoblyAPI from './JoblyAPI';
 import UserContext from './UserContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const TOKEN_STORAGE_ID = 'jobly-token';
 
