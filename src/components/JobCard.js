@@ -1,12 +1,12 @@
-import {
-  Button,
-  Card,
-  CardBody,
-  CardTitle,
-  CardText
-} from 'reactstrap';
+// import {
+//   Button,
+//   Card,
+//   CardBody,
+//   CardTitle,
+//   CardText
+// } from 'reactstrap';
 
-const JobCard = ({ item = {}, handleApply }) => {
+function JobCard({ item = {}, handleApply }) {
   const { title, salary, equity } = item;
 
   // return (
