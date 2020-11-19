@@ -23,10 +23,10 @@ const Routes = ({ setToken }) => {
         <PrivateRoute exact path="/jobs">
           <Jobs />
         </PrivateRoute>
-        <PrivateRoute exact path="/companies/:handle">
+        <PrivateRoute path="/companies/:handle">
           <Company />
         </PrivateRoute>
-        <PrivateRoute exact path="/profile">
+        <PrivateRoute path="/profile">
           <Profile />
         </PrivateRoute>
       </Switch>
