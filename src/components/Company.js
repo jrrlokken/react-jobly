@@ -28,13 +28,14 @@ const Company = () => {
 
   async function apply(idx) {
     if (company && Array.isArray(company.jobs) && idx < company.jobs.length) {
-      let jobID = company.jobs[idx].id;
-      let message = await JoblyAPI.applyToJob(jobID);
+      let jobId = company.jobs[idx].id;
+      let message = await JoblyAPI.applyToJob(jobId);
       setCompany(c => {
         let newCompany = { ...c };
         newCompany.jobs = newCompany.jobs.map(job =>
-          job.id === jobID ? { ...job, state: message } : job
+          job.id === jobId ? { ...job, state: message } : job
         );
+        return newCompany;
       });
     }
   }
