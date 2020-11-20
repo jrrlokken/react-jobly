@@ -27,7 +27,6 @@ const Search = ({ searchFor }) => {
         <Button
           size="lg" 
           color="primary"
-          className="ml-2"
         >
           Submit
         </Button>
