@@ -1,6 +1,5 @@
 import { useContext } from 'react';
-import { Navbar, Nav, NavbarBrand, NavItem } from "reactstrap";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import '../styles/NavBar.css';
 import UserContext from '../UserContext';
 
@@ -9,39 +8,38 @@ const NavBar = ({ logout }) => {
 
   const loggedInNav = () => {
     return (
-        <Nav className="ml-auto">
-          <NavItem>
-            <NavLink to="/companies">Companies</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/jobs">Jobs</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/profile">Profile</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/" onClick={logout}>Log Out</NavLink>
-          </NavItem>
-        </Nav>
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/companies">Companies</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/profile">Profile</NavLink>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/" onClick={logout}>Log Out</Link>
+          </li>
+        </ul>
     );
   }
 
   const loggedOutNav = () => {
     return (
-      <Nav className="ml-auto">
-        <NavItem>
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item mr-4">
           <NavLink to="/login">Login</NavLink>
-        </NavItem>
-      </Nav>
+        </li>
+      </ul>
     );
   }
 
   return (
-    <Navbar expand="md">
-      <NavbarBrand href="/">Jobly</NavbarBrand>
-      {/* {loggedInNav()} */}
+    <nav className="navbar navbar-expand-md">
+      <Link className="navbar-brand" to="/">Jobly</Link>
       {currentUser ? loggedInNav() : loggedOutNav()}
-    </Navbar>
+    </nav>
   );
 }
 
