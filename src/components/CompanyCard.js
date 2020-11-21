@@ -6,7 +6,7 @@ const CompanyCard = ({ item = {} }) => {
   const { name, description, logo_url, handle } = item;
 
   return (
-    <Link className="Card card" to={`/companies/${handle}`}>
+    <Link className="CompanyCard card" to={`/companies/${handle}`}>
       <div className="card-body">
         <h6 className="card-title d-flex justify-content-between">
           <span className="text-capitalize">{name}</span>
