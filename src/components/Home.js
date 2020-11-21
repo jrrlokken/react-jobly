@@ -9,15 +9,15 @@ const Home = () => {
 
   return(
     <div className="Home">
-      <div className="container text-center">
-        <h1 className="mb-4 font-weight-bold">Jobly</h1>
+      <Container className="text-center">
+        <h1 className="Home-title mb-5 font-weight-bold">Jobly</h1>
         <p className="lead">All the jobs in one convenient place.</p>
         {currentUser ? (
-          <h2>Welcome Back {currentUser.first_name}!</h2>
+          <h2 className="text-capitalize">Welcome Back {currentUser.first_name}!</h2>
         ) : (
-          <Link className="btn btn-primary font-weight-bold" to="/login">Log In</Link>
+          <Link className="btn btn-success font-weight-bold" to="/login">Log In</Link>
         )}  
-      </div>
+      </Container>
     </div>
   );
 }
