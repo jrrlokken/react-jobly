@@ -1,12 +1,6 @@
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  CardImg
-} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import defaultLogo from '../default_logo.png';
+import '../styles/CompanyCard.css';
 
 const CompanyCard = ({ item = {} }) => {
   const { name, description, logo_url, handle } = item;
@@ -16,7 +10,7 @@ const CompanyCard = ({ item = {} }) => {
       <div className="card-body">
         <h6 className="card-title d-flex justify-content-between">
           <span className="text-capitalize">{name}</span>
-          <img src={defaultLogo} alt={`${name} Logo`} />
+          <img className="CompanyCard-logo" src={defaultLogo} alt={`${name} Logo`} />
         </h6>
         <p>{description}</p>
       </div>
