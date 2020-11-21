@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Form, Input, Button } from 'reactstrap';
+import { Form, Input, Button } from 'reactstrap';
 import '../styles/Search.css';
 
 const Search = ({ searchFor }) => {
@@ -26,7 +26,7 @@ const Search = ({ searchFor }) => {
         />
         <Button
           size="lg" 
-          color="primary"
+          color="success"
         >
           Submit
         </Button>
