@@ -2,15 +2,19 @@ import { useState, useContext, useEffect, useRef } from 'react';
 import AppAlert from './AppAlert';
 import JoblyAPI from '../JoblyAPI';
 import UserContext from '../UserContext';
+import defaultAvatar from '../default_avatar.png';
 import { 
   Card,
   CardBody,
+  CardImg,
+  CardTitle,
   Form,
   FormGroup,
   Label,
   Input,
   Button
  } from 'reactstrap';
+import '../styles/Profile.css';
 
 const MESSAGE_SHOW_TIME = 3000;
 
@@ -79,9 +83,13 @@ const Profile = () => {
   
   return (
     <div className="col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-      <h3>Profile</h3>
-      <Card>
+      {/* <h3>Profile</h3> */}
+      <Card className="Profile">
         <CardBody>
+          <CardImg className="float-right" src={currentUser.photo_url || defaultAvatar} />
+          <CardTitle tag="h3">
+            Profile
+          </CardTitle>
           <Form>
             <FormGroup>
               <Label>Username</Label>
@@ -144,7 +152,7 @@ const Profile = () => {
         </CardBody>
       </Card>
     </div>
-  )
+  );
 }
 
 export default Profile;
