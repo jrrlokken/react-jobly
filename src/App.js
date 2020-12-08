@@ -9,6 +9,7 @@ import './App.css';
 import JoblyAPI from './JoblyAPI';
 import UserContext from './UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/js/bootstrap.min";
 
 export const TOKEN_STORAGE_ID = 'jobly-token';
 
