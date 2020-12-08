@@ -8,6 +8,7 @@ const NavBar = ({ logout }) => {
 
   const loggedInNav = () => {
     return (
+      <div className="collapse navbar-collapse" id="navbarToggler">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
             <NavLink className="nav-link" to="/companies">Companies</NavLink>
@@ -22,6 +23,7 @@ const NavBar = ({ logout }) => {
             <Link className="nav-link" to="/" onClick={logout}>Log Out</Link>
           </li>
         </ul>
+      </div>  
     );
   }
 
@@ -36,8 +38,18 @@ const NavBar = ({ logout }) => {
   }
 
   return (
-    <nav className="navbar navbar-expand-md">
+    <nav className="navbar navbar-expand-md navbar-light">
       <Link className="navbar-brand" to="/">Jobly</Link>
+      <button 
+        className="navbar-toggler" 
+        type="button" 
+        data-toggle="collapse" 
+        data-target="#navbarToggler" 
+        aria-controls="navbarToggler" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
       {currentUser ? loggedInNav() : loggedOutNav()}
     </nav>
   );
